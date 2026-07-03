@@ -13,7 +13,20 @@ if st.button("اختبار الاتصال بالسيرفر"):
     except Exception as e:
         st.error(f"تعذر الاتصال: {e}")
 st.set_page_config(page_title="نظام المستشفى الآمن (RBAC)", layout="centered")
-
+# أضف هذا الجزء في صفحة Streamlit لتصحيح الخطأ (Debugging)
+if st.sidebar.button("فحص الاتصال"):
+    try:
+        # تأكد من الرابط
+        url_to_test = f"{BASE_URL}/auth/register"
+        st.write(f"يحاول الاتصال بـ: {url_to_test}")
+        
+        # تجربة إرسال طلب فارغ فقط للفحص
+        res = requests.post(url_to_test, json={"username": "test", "password": "123", "role": "Admin"})
+        
+        st.write(f"رمز الحالة (Status Code): {res.status_code}")
+        st.write(f"رد السيرفر: {res.text}")
+    except Exception as e:
+        st.error(f"خطأ: {e}")
 # CSS
 st.markdown("""
 <style>
