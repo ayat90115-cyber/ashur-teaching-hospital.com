@@ -66,7 +66,7 @@ if not st.session_state.token:
             else:
                 try:
                     st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
-                except Excption:
+                except Exception:
                     st.sidebar.error(res.text)
     elif menu == "تسجيل دخول":
        ...
