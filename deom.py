@@ -65,9 +65,9 @@ if not st.session_state.token:
                 st.sidebar.success(f"تم تسجيلك بنجاح كـ {role}! يمكنك الآن تسجيل الدخول.")
             else:
                 try:
-                st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
+                    st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
                 except Excption:
-                st.sidebar.error(res.text)
+                    st.sidebar.error(res.text)
     elif menu == "تسجيل دخول":
        ...
         if st.sidebar.button("دخول"):
