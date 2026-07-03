@@ -2,6 +2,9 @@ import streamlit as st
 import requests
 
 st.subheader("فحص الـ API")
+
+# إعدادات عنوان السيرفر
+BASE_URL = "https://ashur-hospital-backend.onrender.com"
 if st.button("اختبار الاتصال بالسيرفر"):
     try:
         response = requests.get(f"{BASE_URL}/records")
@@ -9,9 +12,6 @@ if st.button("اختبار الاتصال بالسيرفر"):
         st.write(f"المحتوى: {response.json()}")
     except Exception as e:
         st.error(f"تعذر الاتصال: {e}")
-# إعدادات عنوان السيرفر
-BASE_URL = "https://ashur-hospital-backend.onrender.com"
-
 st.set_page_config(page_title="نظام المستشفى الآمن (RBAC)", layout="centered")
 
 # CSS
