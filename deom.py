@@ -63,7 +63,8 @@ if not st.session_state.token:
                 st.sidebar.success(f"تم تسجيلك بنجاح كـ {role}! يمكنك الآن تسجيل الدخول.")
             else:
                 st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
-                
+                except:
+                st.sidebar.error(res.text)
     elif menu == "تسجيل دخول":
         if st.sidebar.button("دخول"):
             res = requests.post(f"{BASE_URL}/auth/login", json={"username": username, "password": password})
