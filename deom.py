@@ -1,6 +1,14 @@
 import streamlit as st
 import requests
 
+st.subheader("فحص الـ API")
+if st.button("اختبار الاتصال بالسيرفر"):
+    try:
+        response = requests.get(f"{BASE_URL}/records")
+        st.write(f"الحالة: {response.status_code}")
+        st.write(f"المحتوى: {response.json()}")
+    except Exception as e:
+        st.error(f"تعذر الاتصال: {e}")
 # إعدادات عنوان السيرفر
 BASE_URL = "https://ashur-hospital-backend.onrender.com"
 
@@ -199,7 +207,7 @@ else:
 
                 if len(records) == 0:
                     st.info("لا توجد سجلات")
-
+                    
                 for rec in records:
 
                     with st.expander(rec["patient_name"]):
