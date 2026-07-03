@@ -56,7 +56,9 @@ if not st.session_state.token:
     if menu == "إنشاء حساب جديد":
         role = st.sidebar.selectbox("اختر الدور الطبي", ["Admin", "Doctor", "Nurse", "Receptionist", "Patient"])
         if st.sidebar.button("إنشاء الحساب"):
-            res = requests.post(f"{BASE_URL}/auth/register", json=...)
+            res = requests.post(f"{BASE_URL}/auth/register", json={"username": username,
+                                                                   "password": password,
+                                                                   "role":role})
             if res.status_code == 200:
                 st.sidebar.success(f"تم تسجيلك بنجاح كـ {role}! يمكنك الآن تسجيل الدخول.")
             else:
