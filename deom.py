@@ -58,7 +58,9 @@ if not st.session_state.token:
         if st.sidebar.button("إنشاء الحساب"):
             res = requests.post(f"{BASE_URL}/auth/register", json={"username": username,
                                                                    "password": password,
-                                                                   "role":role})
+                                                                   "role":role
+                                                                  }
+                               )
             if res.status_code == 200:
                 st.sidebar.success(f"تم تسجيلك بنجاح كـ {role}! يمكنك الآن تسجيل الدخول.")
             else:
