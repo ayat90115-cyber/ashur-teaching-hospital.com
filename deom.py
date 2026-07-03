@@ -64,9 +64,10 @@ if not st.session_state.token:
             else:
                 try:
                 st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
-                except:
+                except Excption:
                 st.sidebar.error(res.text)
     elif menu == "تسجيل دخول":
+       ...
         if st.sidebar.button("دخول"):
             res = requests.post(f"{BASE_URL}/auth/login", json={"username": username, "password": password})
             if res.status_code == 200:
