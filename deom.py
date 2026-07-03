@@ -62,6 +62,7 @@ if not st.session_state.token:
             if res.status_code == 200:
                 st.sidebar.success(f"تم تسجيلك بنجاح كـ {role}! يمكنك الآن تسجيل الدخول.")
             else:
+                try:
                 st.sidebar.error(res.json().get("detail", "حدث خطأ ما"))
                 except:
                 st.sidebar.error(res.text)
